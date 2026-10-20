@@ -1,0 +1,218 @@
+/* HEARTCALM — ingredient 3D cards. Scoped: will not affect Bootstrap's .card. */
+.hc-ingredients-section {
+  background: radial-gradient(ellipse 65% 40% at 95% 4%, #ffe1e8 0, transparent 85%), #fff9f5;
+}
+
+.hc-ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.8vw, 20px);
+  align-items: stretch;
+  padding-block: 12px 28px;
+  perspective: 1500px;
+}
+
+.hc-ingredient-3d {
+  --accent: #e97183;
+  --bg: #ffe0e8;
+  --orb: #ffa9c4;
+  --ink: #63243b;
+  isolation: isolate;
+  position: relative;
+  min-width: 0;
+  height: 395px;
+  padding: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, .92);
+  border-radius: 30px;
+  background: radial-gradient(ellipse 70% 50% at 90% 5%, #ffffffc9, transparent 80%), var(--bg);
+  box-shadow: 0 13px 23px #9b556319, 0 2px 5px #b46f7720;
+  color: var(--ink);
+  transform-style: preserve-3d;
+  transition: box-shadow .35s ease;
+
+  &--green { --accent: #448f68; --bg: #e3f1df; --orb: #a5d5a2; --ink: #295641; }
+  &--pink { --accent: #db557a; --bg: #ffdfeb; --orb: #ff96b7; --ink: #71314e; }
+  &--blue { --accent: #4b93bd; --bg: #dceeff; --orb: #99d4ff; --ink: #29546b; }
+  &--yellow { --accent: #c78d31; --bg: #fff0c1; --orb: #ffd179; --ink: #74501e; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(145deg, #ffffff99, transparent 38%, #ffffff52);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 24px 60px #a7506c35;
+  }
+
+  &__watermark {
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    white-space: nowrap;
+    transform: translateX(-50%) translateZ(5px) rotate(-12deg);
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    font-weight: 1000;
+    letter-spacing: -.06em;
+    color: var(--accent);
+    opacity: .07;
+    pointer-events: none;
+  }
+
+  &__number {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    padding: 7px 11px;
+    border: 1px solid #ffffffbb;
+    background: #ffffff87;
+    border-radius: 100px;
+    font-size: .65rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    transform: translateZ(38px);
+  }
+
+  &__orb {
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    width: min(72%, 180px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 24%, #ffffffdc 0, var(--orb) 48%, var(--accent) 100%);
+    box-shadow: 18px 20px 26px #62435a24, inset -10px -14px 23px #562f351a;
+    transform: translateX(-50%) translateZ(30px);
+    transition: transform .45s cubic-bezier(.2,.8,.2,1);
+  }
+
+  &__graphic {
+    position: absolute;
+    top: 101px;
+    left: 50%;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 138px;
+    height: 124px;
+    font-size: clamp(4.4rem, 7vw, 6.2rem);
+    color: #fffdf7;
+    text-shadow: 0 4px 8px #753e5d20;
+    filter: drop-shadow(8px 12px 3px #70335533);
+    transform: translateX(-50%) translateZ(72px) rotate(-13deg);
+    transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+  }
+
+  &__copy {
+    position: absolute;
+    z-index: 3;
+    left: 18px;
+    right: 18px;
+    bottom: 64px;
+    transform: translateZ(45px);
+  }
+
+  &__eyebrow {
+    display: block;
+    color: var(--accent);
+    font-size: .59rem;
+    font-weight: 1000;
+    letter-spacing: .14em;
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    margin: 0 0 6px;
+    font-size: clamp(1.03rem, 1.45vw, 1.34rem);
+    font-weight: 1000;
+    letter-spacing: -.045em;
+    line-height: 1.15;
+  }
+
+  p {
+    margin: 0;
+    font-size: .72rem;
+    line-height: 1.42;
+    color: #755c68;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  &__link {
+    position: absolute;
+    bottom: 17px;
+    left: 18px;
+    z-index: 5;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+    padding: 8px 14px;
+    border-radius: 100px;
+    background: var(--accent);
+    color: #fff;
+    font-size: .73rem;
+    font-weight: 900;
+    text-decoration: none;
+    transform: translateZ(62px);
+    box-shadow: 0 7px 13px #633b3f19;
+    transition: background .2s, transform .2s;
+
+    &:hover, &:focus-visible { background: #9b365b; color: #fff; }
+    &:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  }
+
+  &:hover &__graphic { transform: translateX(-50%) translateZ(95px) rotate(-5deg) scale(1.09); }
+  &:hover &__orb { transform: translateX(-50%) translateZ(43px) scale(1.05); }
+}
+
+#bahan-detail { scroll-margin-top: calc(var(--header-height, 90px) + 24px); }
+
+@media (max-width: 1100px) {
+  .hc-ingredients-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; margin-inline: auto; }
+  .hc-ingredient-3d { height: 380px; }
+}
+
+@media (max-width: 650px) {
+  .hc-ingredients-grid { gap: 11px; padding-bottom: 14px; }
+  .hc-ingredient-3d { height: 298px; border-radius: 20px; padding: 11px; }
+  .hc-ingredient-3d__number { font-size: .55rem; padding: 5px 7px; }
+  .hc-ingredient-3d__orb { top: 55px; width: min(72%, 126px); }
+  .hc-ingredient-3d__graphic { top: 68px; width: 100px; height: 89px; font-size: 3.45rem; }
+  .hc-ingredient-3d__watermark { top: 84px; font-size: 2rem; }
+  .hc-ingredient-3d__copy { left: 11px; right: 11px; bottom: 50px; }
+  .hc-ingredient-3d__eyebrow { font-size: .49rem; letter-spacing: .07em; }
+  .hc-ingredient-3d h3 { font-size: clamp(.85rem, 3.5vw, 1.05rem); }
+  .hc-ingredient-3d p { font-size: .62rem; line-height: 1.3; -webkit-line-clamp: 2; line-clamp: 2; }
+  .hc-ingredient-3d__link { left: 11px; bottom: 10px; min-height: 31px; font-size: .61rem; padding: 6px 10px; gap: 7px; }
+}
+
+@media (max-width: 360px) {
+  .hc-ingredient-3d { height: 295px; }
+  .hc-ingredient-3d__orb { width: min(72%, 110px); }
+  .hc-ingredient-3d__graphic { font-size: 3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-ingredient-3d, .hc-ingredient-3d * { transition: none !important; }
+}
+
+/* Details typography — preserves the existing desktop and mobile layout. */
+.hc-ingredient-details__subheading {
+  margin: 23px 12px 7px;
+  color: #b84467;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
